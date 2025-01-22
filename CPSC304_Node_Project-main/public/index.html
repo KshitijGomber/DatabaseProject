@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag ensures that the website renders correctly across different device sizes, enhancing mobile responsiveness. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to the external CSS stylesheet. Uncomment if you wish to customize or add styling. -->
+    <!-- <link rel="stylesheet" href="styles.css">   -->
+
+    <title>Database Application</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <!-- ===================================================================================== -->
+    <!-- Display the current status of the database connection. 
+         !!HERE TO HELP U DEBUGGING, NOT REQUIRED IN YOUR OWN PROJECT!!
+         -->
+    <h2>Database Connection Status: 
+        <!-- An in-line placeholder to display connection status. -->
+        <span id="dbStatus"> </span>
+        <!-- A loading GIF, will be hided once get the status. -->
+        <img id="loadingGif" class="loading-gif" src="loading_100px.gif" alt="Loading...">
+    </h2>
+
+    <br><hr><br> <!-- ========================================================================= -->
+
+    <!-- ===================================PLAYER (INSERT, DELETE, PROJECT)===================================== -->
+    <div class="player">
+
+        <div class="playertable">
+            <h2>Player Table</h2>
+            <table id="playertable" border="1" class="playertable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Followers</th>
+                        <th>Following</th>
+                        <th>Reviews</th>
+                        <th>Achievements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    
+            <!-- <button id="resetplayertable"> reset </button> <br> -->
+        </div>
+
+        <div>
+            <h2> Insert </h2>
+            <form id="insertPlayer">
+                <label>Username:</label>
+                    <input type="text" id="insertUsername" placeholder="Enter Username" maxlength="50" required>
+                <br>
+
+                <label> Followers: </label>
+                    <input type="number" id="insertFollowers" placeholder="Enter Follower Count">
+                <br>
+
+                <label> Following: </label>
+                    <input type="number" id="insertFollowing" placeholder="Enter Following Count"> 
+                <br>
+
+                <label> Reviews: </label>
+                    <input type="number" id="insertReviews" placeholder="Enter Review Count"> 
+                <br>
+                <label> Achievements: </label>
+                    <input type="number" id="insertAchievements" placeholder="Enter Achievement Count"> 
+                <br>
+
+                <button type="submit"> INSERT </button> <br>
+            </form>
+            <div id="insertResultMsg"></div>
+        </div>
+        
+        <div>
+            <h2>Delete</h2>
+            <form id="deletePlayer">
+                <label class="delete">Username:</label> <input type="text" id="deleteOldFollowers" placeholder="Enter Old Username"> <br>
+                <button type="submit" class="deletebutton"> DELETE </button> <br>
+            </form>
+            <div id="deleteResultMsg"></div>
+        </div>
+
+        <div>
+            <h2> Project </h2>
+            <form id="projectPlayer">
+                <input type="checkbox" id="projectUsername" name="project_player" value="Username" class="checkbox"> <label>Username</label> <br>
+                <input type="checkbox" id="projectFollowers" name="project_followers" value="Followers" class="checkbox"> <label>Followers</label> <br>
+                <input type="checkbox" id="projectFollowing" name="project_following" value="Following" class="checkbox"> <label>Following</label> <br>
+                <input type="checkbox" id="projectReviews" name="project_reviews" value="Reviews" class="checkbox"> <label>Reviews</label> <br>
+                <input type="checkbox" id="projectAchievements" name="project_achievements" value="Achievements" class="checkbox"> <label>Achievements</label> <br>
+                
+        
+                <button type="submit"> PROJECT </button> <br>
+            </form>
+            <div id="projectResultMsg"></div> <br>
+        </div>
+    </div>
+    <br>
+        <form id="nestedgroup">
+            <label>Find all players with more achievements than the given player:</label>
+            <input type="text" id="insertGroupPlayer" placeholder="Enter Username" maxlength="50" required>
+            <button id="nestedgroupby"> Aggregate Nested with GROUP BY</button>
+        </form>
+        <div id="nestedgroupResultMsg"></div>
+        <button id="having"> Aggregate with HAVING - Find all players with at least 50 followers</button>
+        <div id="havingResultMsg"></div>
+
+    <br><br><hr><br><!-- ==================================ITEM (UPDATE)====================================== -->
+
+    <div class="item">
+        <div class="itemtable">
+            <h2>Item Table</h2>
+            <table id="itemtable" border="1" class="itemtable">
+                <thead>
+                    <tr>
+                        <th>Price</th>
+                        <th>Name</th>
+                        <th>Function</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <form id="updateItem" class="itemform">
+            <h2>Update</h2>
+            <p>Values are case sensitive</p>
+            <label>Old Name:</label> <input type="text" id="updateOldItemName" placeholder="Enter Old Name"> 
+            <label>New Name:</label> <input type="text" id="updateNewItemName" placeholder="Enter New Name"> <br><br>
+    
+            <label>Old Price:</label> <input type="number" id="updateOldItemPrice" placeholder="Enter Old Price" step="0.01"> 
+            <label>New Price:</label> <input type="number" id="updateNewItemPrice" placeholder="Enter New Price" step="0.01"> <br><br>    
+    
+            <label>Old Function:</label> <input type="text" id="updateOldItemFunction" placeholder="Enter Old Function"> 
+            <label>New Function:</label> <input type="text" id="updateNewItemFunction" placeholder="Enter New Function"> <br>
+    
+            <button type="submit"> UPDATE </button> <br>
+        </form>
+        <div id="updateNameResultMsg"></div>
+    </div>
+
+    <br><hr><br> <!-- ======================================GAME (SELECT)================================== -->
+
+    <div class="game">
+
+        <div class="playertable">
+            <h2>Game Table</h2>
+            <table id="gametable" border="1" class="playertable">
+                <thead>
+                    <tr>
+                        <th>Price</th>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Platforms</th>
+                        <th>Release Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        
+        <form id="selectGame" class="gameform">
+            <h2>Select</h2>
+            <p>
+                Attributes available to select on are Name, releaseYear, developerCompany, 
+                publishingCompany, Genre, Price, and Platform.
+                To make a selection, enter an attribute and an equality, with either the =, >, or < sign. 
+                Multiple selections can be connected together with an AND or OR.
+            </p>
+            <label for="selectGameInput">Selection:</label>
+            <input type="text" id="selectGameInput" placeholder="Enter Selection (e.g., Price > 50)" maxlength="999" required>
+            <br><br>
+            <button type="submit"> SELECT </button>
+        </form>
+        
+        <div id="selectResultMsg" style="white-space: pre-wrap; margin-top: 20px; font-family: monospace; color: #333;">
+            <!-- Results will appear here in plain text -->
+        </div>
+        
+        
+    </div>
+    <button id="division"> Division - Find all games that have been reviewed by every user with a review submitted </button>
+    <div id="divisionResultMsg"></div>
+    <br>
+
+    <br><hr><br> <!-- ==================================JOIN====================================== -->
+
+    <div style="display:flex; flex-direction: row; justify-content: left; align-items: left">
+
+        <div class="jointable">
+            <h2>Game/Review Table for Join and Group By</h2>
+            <table id="jointable" border="1" class="jointable">
+                <thead>
+                    <tr>
+                        <th>Price</th>
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th>Platforms</th>
+                        <th>Release Year</th>
+                        <th>Rating</th>
+                        <th>Text</th>
+                        <th>Time</th>
+                        <th>Author Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+
+        <form id="join" class="joinform">
+            <h2> Join </h2>
+            <p>Join Game and Review</p>
+            <label for="joinWhere">Where:</label>
+            <input 
+                type="text" 
+                id="joinWhere" 
+                placeholder="e.g., G.name = 'game1' and R.rating = 5" 
+                maxlength="999" 
+                required 
+                style="width: 80%; height: 50px; font-size: 16px; padding: 10px;"
+            > 
+            <br><br>
+            <button type="submit"> JOIN </button> <br>
+        </form>
+        <div id="joinResultMsg"></div>
+        <br><br>
+        
+        
+    </div>
+    <button id="groupby"> Aggregate with GROUP BY - Find each game's average rating</button>
+    <div id="groupbyResultMsg"></div>
+    <br>
+
+    <!-- ===================================================================================== -->
+    <!-- External JavaScript file that contains the functionality/logic for the operations above. -->
+    <script src="scripts.js"></script>
+</body>
+</html>
